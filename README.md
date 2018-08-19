@@ -38,7 +38,7 @@ python src/main.py
 ```
 
 Sample output should be similar to:
-```txt
+```text
 Instance: abc                 Encrypted: False
 Instance: cde                 Encrypted: True
 Instance: fgh                 Encrypted: False
