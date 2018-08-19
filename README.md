@@ -13,7 +13,6 @@ Currently, AWS don't allow RDS instances to be encrypted directly. One must crea
 
 - [python3](https://www.python.org/downloads/)
 - [pip](https://docs.python.org/3/installing/index.html)
-- [boto3](https://boto3.readthedocs.io/en/latest/guide/quickstart.html#installation)
 
 # Configuration
 
@@ -27,7 +26,12 @@ export PROFILE_NAME="prod"                                                      
 export RDS_KMS_ID="arn:aws:kms:us-east-1:123456:key/abcd-efgh-ijkl-mnop-qrstuvwxyz" # IAM encryption key used to encrypt RDS snapshots.
 ```
 
-# Executing
+# Install
+```python
+pip install -r requirements.txt
+```
+
+# Start
 ```python
 python src/main.py
 ```
