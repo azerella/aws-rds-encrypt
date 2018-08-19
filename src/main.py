@@ -101,9 +101,12 @@ def main():
                     }                
                 )
 
+                # Delete original instance prior to creating a 
+                # final snapshot to restore from, in the event 
+                # of data loss or error.
                 rds_client.delete_db_instance(
                     DBInstanceIdentifier=instance['DBInstanceIdentifier'],
-                    SkipFinalSnapshot=True
+                    SkipFinalSnapshot=False 
                 )
                 
                 rds_client.get_waiter('db_instance_deleted').wait(
