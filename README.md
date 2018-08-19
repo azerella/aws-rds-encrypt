@@ -7,20 +7,21 @@
 
 > Python script to safely encrypt unencrypted AWS RDS instances with minimal downtime.
 
-Currently, AWS don't allow RDS instances to be encrypted directly. One must create an encrypted snapshot of an active instance, restore a new instance with said snapshot then redirect the active unencrypted instance to the newly created encrypted instance. This process can be confusing and time consuming, so why not automate it? 😁
+Currently, [AWS RDS instances are limited when it comes to enabling encryption for existing instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html#Overview.Encryption.Limitations). One must create an encrypted snapshot copy of the active instance, restore a new instance with said snapshot then redirect the active unencrypted instance to the newly created encrypted instance. This process can be confusing and time consuming, so why not automate it? 😁
 
 # Prerequisites
 
 - [python3](https://www.python.org/downloads/)
-- [pip](https://docs.python.org/3/installing/index.html)
+- [pip](https://docs.python.org/3/installing/index.html#key-terms)
 
 # Configuration
 
 This script replies on two things to be configured prior to executing: 
 
-Firstly, having a local `~/.aws/credentials` file with relevant access keys and profile names for different enviornmnets. This can be easily created using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and running `aws configure`.
+1. Having a local `~/.aws/credentials` file with relevant access keys and profile names for different enviornmnets. This can be easily created using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and running `aws configure`.
 
-Secondly,  relevant environment variables are set:
+2. Relevant environment variables are set:
+
 ```bash
 export PROFILE_NAME="prod"                                                          # Profile name used to interact with RDS.
 export RDS_KMS_ID="arn:aws:kms:us-east-1:123456:key/abcd-efgh-ijkl-mnop-qrstuvwxyz" # IAM encryption key used to encrypt RDS snapshots.
@@ -36,9 +37,24 @@ pip install -r requirements.txt
 python src/main.py
 ```
 
+Sample output should be similar to:
+```txt
+Instance: abc                 Encrypted: False
+Instance: cde                 Encrypted: True
+Instance: fgh                 Encrypted: False
+
+Detected 2 unencrypted RDS instances!
+Starting RDS encryption process...
+
+Creating snapshot for: abc
+Creating encrypted snapshot from unencrypted copy
+...
+```
+
 # License
 
 This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/adamzerella/aws-rds-encrypt/master/LICENSE) file for details.
+
 
 # Contributors
 
