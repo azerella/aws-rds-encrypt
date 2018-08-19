@@ -125,8 +125,8 @@ def main():
                     DBInstanceIdentifier=instance['DBInstanceIdentifier']
                 )
 
-                print('RDS encryption process complete for: %s!' % instance['DBInstanceIdentifier'])
-            print('\nSUCCESS!!! \n Exiting..')
+                print('RDS encryption process complete for: %s!\n' % instance['DBInstanceIdentifier'])
+            print('\nENCRYPTION PROCESS COMPLETE!!! \n EXIT..')
             exit(0)
         except botocore.exceptions.ClientError as e:
             print(e.response['Error']['Code'])
