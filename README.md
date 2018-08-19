@@ -9,6 +9,8 @@
 
 Currently, [AWS RDS instances are limited when it comes to enabling encryption for existing instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html#Overview.Encryption.Limitations). One must create an encrypted snapshot copy of the active instance, restore a new instance with said snapshot then redirect the active unencrypted instance to the newly created encrypted instance. This process can be confusing and time consuming, so why not automate it? 😁
 
+> NOTE: This script relies on the RDS instance to be in the <strong>available state</strong>. Due to AWS limitations a snapshot copy cannot occur if the instance isn't available. It's reccomended to ensure <strong>no data is being written to the DB</strong> at the time of the snapshot as data loss will occur.
+
 # Prerequisites
 
 - [python3](https://www.python.org/downloads/)
