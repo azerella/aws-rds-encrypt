@@ -31,12 +31,12 @@ export RDS_KMS_ID="arn:aws:kms:us-east-1:123456:key/abcd-efgh-ijkl-mnop-qrstuvwx
 
 # Install
 ```python
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 # Start
 ```python
-python src/main.py
+python3 src/main.py
 ```
 
 Sample output should be similar to:
