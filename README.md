@@ -5,7 +5,7 @@
 [![GitHub license](https://img.shields.io/github/license/adamzerella/aws-rds-encrypt.svg)](https://github.com/adamzerella/adamzerella/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/adamzerella/aws-rds-encrypt.svg)](https://github.com/adamzerella/adamzerella/issues)
 
-> Python script to safely encrypt unencrypted AWS RDS instances with minimal downtime.
+> Python script to encrypt unencrypted AWS RDS instances.
 
 Currently, [AWS RDS instances are limited when it comes to enabling encryption for existing instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html#Overview.Encryption.Limitations). One must create an encrypted snapshot copy of the active instance, restore a new instance with said snapshot then redirect the active unencrypted instance to the newly created encrypted instance. This process can be confusing and time consuming, so why not automate it? 😁
 
